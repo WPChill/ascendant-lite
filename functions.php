@@ -4,12 +4,23 @@ add_action( 'after_setup_theme', 'ascendant_child_theme_setup' );
 
 function ascendant_child_theme_setup() {
 
+	$theme = wp_get_theme();
+	if ( $theme->Template == 'allegiant_pro' ) {
+		add_filter('body_class', 'ascendant_body_class');
+	}
+
     // Remove parent font
 	remove_action('wp_head', 'cpotheme_styling_fonts', 20 );
+	remove_action('wp_head', 'cpotheme_styling_custom', 20);
 
 	remove_filter('cpotheme_background_args', 'cpotheme_background_args');
 	add_filter('cpotheme_background_args', 'cpotheme_child_background_args');
 
+}
+
+function ascendant_body_class( $classes ){
+	$classes[] = 'allegian_pro_template';
+	return $classes;
 }
 
 //Add public stylesheets
@@ -45,7 +56,7 @@ if(!function_exists('cpotheme_child_background_args')){
 	}
 }
 
-add_filter( 'cpotheme_customizer_controls', 'ascendant_add_customizer_fields' );
+add_filter( 'cpotheme_customizer_controls', 'ascendant_add_customizer_fields', 11 );
 function ascendant_add_customizer_fields( $data ){
 
 	$data['transparent_header'] = array(
@@ -56,6 +67,104 @@ function ascendant_add_customizer_fields( $data ){
 		'sanitize' => 'cpotheme_sanitize_bool',
 		'default' => '1');
 
+	//Typography
+	if ( isset($data['type_headings']) ) {
+		$data['type_headings']['default'] = 'Raleway';
+	}
+	if ( isset($data['type_nav']) ) {
+		$data['type_nav']['default'] = 'Raleway';
+	}
+	if ( isset($data['type_body']) ) {
+		$data['type_body']['default'] = 'Lato';
+	}
+	if ( isset($data['primary_color']) ) {
+		$data['primary_color']['default'] = '#70b85d';
+	}
+	if ( isset($data['type_headings_color']) ) {
+		$data['type_headings_color']['default'] = '#18253c';
+	}
+	if ( isset($data['type_widgets_color']) ) {
+		$data['type_widgets_color']['default'] = '#18253c';
+	}
+	if ( isset($data['type_nav_color']) ) {
+		$data['type_nav_color']['default'] = '#18253c';
+	}
+	if ( isset($data['type_link_color']) ) {
+		$data['type_link_color']['default'] = '#70b85d';
+	}
+	if ( isset($data['type_body_color']) ) {
+		$data['type_body_color']['default'] = '#8c9597';
+	}
+
+	if ( isset($data['postpage_dates']) ) {
+		$data['postpage_dates']['default'] = false;
+	}
+	if ( isset($data['postpage_authors']) ) {
+		$data['postpage_authors']['default'] = false;
+	}
+	if ( isset($data['postpage_comments']) ) {
+		$data['postpage_comments']['default'] = false;
+	}
+	if ( isset($data['postpage_categories']) ) {
+		$data['postpage_categories']['default'] = false;
+	}
+	if ( isset($data['postpage_tags']) ) {
+		$data['postpage_tags']['default'] = false;
+	}
+
 	return $data;
 
+}
+
+// Pro Typographi
+add_filter('cpotheme_font_headings', 'ascendant_cpotheme_font_headings');
+add_filter('cpotheme_font_menu', 'ascendant_cpotheme_font_menu');
+add_filter('cpotheme_font_body', 'ascendant_cpotheme_font_body');
+
+function ascendant_cpotheme_font_headings() {
+	$option_list = get_option('cpotheme_settings', false);
+	if ( isset($option_list['type_headings']) ) {
+		return $option_list['type_headings'];
+	}else{
+		return "Raleway";
+	}
+}
+
+function ascendant_cpotheme_font_menu() {
+	$option_list = get_option('cpotheme_settings', false);
+	if ( isset($option_list['type_nav']) ) {
+		return $option_list['type_nav'];
+	}else{
+		return "Raleway";
+	}
+}
+
+function ascendant_cpotheme_font_body() {
+	$option_list = get_option('cpotheme_settings', false);
+	if ( isset($option_list['type_body']) ) {
+		return $option_list['type_body'];
+	}else{
+		return "Lato";
+	}
+}
+
+add_action('wp_head', 'ascendant_cpotheme_styling_custom', 20);
+function ascendant_cpotheme_styling_custom(){
+	$primary_color = cpotheme_get_option('primary_color'); ?>
+	<style type="text/css">
+		<?php if($primary_color != ''): ?>
+		html body .button, 
+		html body .button:link, 
+		html body .button:visited,
+		.menu-portfolio .current-cat a,
+		.pagination .current,
+		html body input[type=submit] { background: <?php echo $primary_color; ?>; }
+		html body .button:hover,
+		html body input[type=submit]:hover { color:#fff; background:<?php echo $primary_color; ?>; }
+		.menu-main .current_page_ancestor > a,
+		.menu-main .current-menu-item > a,
+		.features a.feature-image, .team .team-member-description { color:<?php echo $primary_color; ?>; }
+		<?php endif; ?>
+    </style>
+	<?php
 }
