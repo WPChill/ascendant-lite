@@ -1,27 +1,27 @@
 # About Theme
 
 Theme Name: Ascendant<br>
-Theme URI: https://cpothemes.com/themes/Ascendant<br>
+Theme URI: https://cpothemes.com/theme/Ascendant<br>
 Version: 0.2<br>
 Tested up to: WP 4.6.2<br>
 
 Author: CPOThemes<br>
 Author URI: https://cpothemes.com/<br>
-License: GNU General Public License v3.0
-License URI: http://www.gnu.org/licenses/gpl.html
+License: GNU General Public License v3.0 <br />
+License URI: http://www.gnu.org/licenses/gpl.html <br />
 -------------------------------------------------------
-Ascendant theme, Copyright 2017 cpothemes.com
-Ascendant WordPress theme is distributed under the terms of the GNU GPL
-Ascendant is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Ascendant theme, Copyright 2017 cpothemes.com <br />
+Ascendant WordPress theme is distributed under the terms of the GNU GPL <br />
+Ascendant is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc. <br />
 -------------------------------------------------------
 
 # Credits
-Unless otherwise specified, all the theme files, scripts and images are licensed under GPLv3 license
+Unless otherwise specified, all the theme files, scripts and images are licensed under GPLv3 license <br />
 
 Ascendant theme uses:
-* FontAwesome (http://fontawesome.io) licensed under the SIL OFL 1.1 (http://scripts.sil.org/OFL)
-* Bootstrap (http://getbootstrap.com/) licensed under MIT license (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-* Unless otherwise specified, all images are created by CPOthemes
+* FontAwesome (http://fontawesome.io) licensed under the SIL OFL 1.1 (http://scripts.sil.org/OFL) <br />
+* Bootstrap (http://getbootstrap.com/) licensed under MIT license (https://github.com/twbs/bootstrap/blob/master/LICENSE) <br />
+* Unless otherwise specified, all images are created by CPOthemes <br />
 
 # Description
 
