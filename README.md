@@ -5,14 +5,14 @@ Theme URI: https://cpothemes.com/theme/Ascendant<br>
 Version: 0.2<br>
 Tested up to: WP 4.6.2<br>
 
-Author: CPOThemes<br>
-Author URI: https://cpothemes.com/<br>
-License: GNU General Public License v3.0 <br />
-License URI: http://www.gnu.org/licenses/gpl.html <br />
+### Author: CPOThemes<br>
+### Author URI: https://cpothemes.com/<br>
+### License: GNU General Public License v3.0 <br />
+### License URI: http://www.gnu.org/licenses/gpl.html <br />
 -------------------------------------------------------
-Ascendant theme, Copyright 2017 cpothemes.com <br />
-Ascendant WordPress theme is distributed under the terms of the GNU GPL <br />
-Ascendant is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc. <br />
+#### Ascendant theme, Copyright 2017 cpothemes.com <br />
+#### Ascendant WordPress theme is distributed under the terms of the GNU GPL <br />
+#### Ascendant is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc. <br />
 -------------------------------------------------------
 
 # Credits
