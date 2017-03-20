@@ -21,7 +21,12 @@
 
 			$class = '';
 			if ( cpotheme_get_option('transparent_header') ) {
-				$class = ' header-with-slider';
+				if(is_front_page() || cpotheme_get_option('slider_always') === true){
+					$query = new WP_Query('post_type=cpo_slide&posts_per_page=-1&order=ASC&orderby=menu_order');
+					if ( $query->posts ) {
+						$class = ' header-with-slider';
+					}
+				}
 				if(has_nav_menu('top_menu')) {
 					$class .= ' with-top-menu';
 				}
