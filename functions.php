@@ -111,6 +111,9 @@ function ascendant_add_customizer_fields( $data ){
 	if ( isset($data['postpage_tags']) ) {
 		$data['postpage_tags']['default'] = false;
 	}
+	if ( isset($data['home_tagline_content']) ) {
+		$data['home_tagline_content']['sanitize'] = 'wp_kses_post';
+	}
 
 	return $data;
 
