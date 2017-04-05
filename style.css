@@ -5,7 +5,7 @@
  Tags: one-column, two-columns, right-sidebar, full-width-template, sticky-post, theme-options, custom-background, custom-menu, featured-images, threaded-comments, translation-ready
  Author:CPOThemes
  Author URI: https://cpothemes.com/
- Version: 0.3
+ Version: 0.5
  License: GNU General Public License 3.0 or later
  License URI: license.md
  Template: allegiant
@@ -136,7 +136,7 @@ body:not(.allegian_pro_template) .tagline-title,
 body.allegian_pro_template .tagline-content {
     font-size: 26px;
     font-family: "Raleway";
-    font-weight: 100;
+    font-weight: 300;
     line-height: 44px;
     text-transform: initial;
 }
@@ -156,6 +156,9 @@ body.allegian_pro_template .tagline-title {
 }
 .tagline a {
 	color: #70b85d;
+}
+body #tagline {
+	color: #fff;
 }
 
 /* Portfolio */
@@ -234,7 +237,7 @@ body.allegian_pro_template .tagline-title {
 	line-height: 24px;
 	text-transform: initial;
 	font-family: "Raleway";
-	font-weight: 100;
+	font-weight: 300;
 }
 .testimonial-position {
     font-family: "Raleway";

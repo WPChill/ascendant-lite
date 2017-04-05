@@ -28,7 +28,7 @@ if(!function_exists('ascendant_child_add_styles')){
 	add_action('wp_enqueue_scripts', 'ascendant_child_add_styles', 9);
 	function ascendant_child_add_styles(){
 
-		wp_enqueue_style( 'ascendant-google-font', 'https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:100,400,500,700,800,900' );	
+		wp_enqueue_style( 'ascendant-google-font', 'https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:300,400,500,700,800,900' );	
 		wp_enqueue_style('ascendant-main', get_template_directory_uri().'/style.css');
 
 	}
