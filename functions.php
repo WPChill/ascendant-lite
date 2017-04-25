@@ -14,7 +14,7 @@ function ascendant_child_theme_setup() {
 	remove_action('wp_head', 'cpotheme_styling_custom', 20);
 
 	remove_filter('cpotheme_background_args', 'cpotheme_background_args');
-	add_filter('cpotheme_background_args', 'cpotheme_child_background_args');
+	add_filter('cpotheme_background_args', 'ascendant_child_background_args');
 
 }
 
@@ -25,11 +25,20 @@ function ascendant_body_class( $classes ){
 
 //Add public stylesheets
 if(!function_exists('ascendant_child_add_styles')){
-	add_action('wp_enqueue_scripts', 'ascendant_child_add_styles', 9);
+	add_action('wp_enqueue_scripts', 'ascendant_child_add_styles' );
 	function ascendant_child_add_styles(){
 
-		wp_enqueue_style( 'ascendant-google-font', 'https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:300,400,500,700,800,900' );	
-		wp_enqueue_style('ascendant-main', get_template_directory_uri().'/style.css');
+		$parent_style = 'cpotheme-main'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+ 		wp_enqueue_style( 'ascendant-google-font', 'https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:300,400,500,700,800,900' );
+	    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
+	    wp_enqueue_style( 'ascendant-style',
+	        get_stylesheet_uri(),
+	        array( $parent_style, 'cpotheme-base' ),
+	        wp_get_theme()->get('Version')
+	    );
+
+			
+		// wp_enqueue_style('ascendant-main', get_template_directory_uri().'/style.css');
 
 	}
 }
@@ -43,14 +52,15 @@ if(!function_exists('ascendant_child_add_fontawesome')){
 	}
 }
 
-if(!function_exists('cpotheme_child_background_args')){
-	function cpotheme_child_background_args($data){ 
+if(!function_exists('ascendant_child_background_args')){
+	function ascendant_child_background_args($data){ 
 		$data = array(
-		'default-color' => 'eeeeee',
+		'default-color' => 'fff',
 		'default-image' => get_stylesheet_directory_uri().'/images/background.jpg',
 		'default-repeat' => 'no-repeat',
 		'default-position-x' => 'center',
 		'default-attachment' => 'fixed',
+		'wp-head-callback' => 'ascendant_custom_background_cb'
 		);
 		return $data;
 	}
@@ -161,12 +171,12 @@ function ascendant_cpotheme_styling_custom(){
 		html body .button:visited,
 		.menu-portfolio .current-cat a,
 		.pagination .current,
-		html body input[type=submit] { background: <?php echo $primary_color; ?>; }
+		html body input[type=submit] { background: <?php echo sanitize_hex_color($primary_color); ?>; }
 		html body .button:hover,
-		html body input[type=submit]:hover { color:#fff; background:<?php echo $primary_color; ?>; }
+		html body input[type=submit]:hover { color:#fff; background:<?php echo sanitize_hex_color($primary_color); ?>; }
 		.menu-main .current_page_ancestor > a,
 		.menu-main .current-menu-item > a,
-		.features a.feature-image, .team .team-member-description { color:<?php echo $primary_color; ?>; }
+		.features a.feature-image, .team .team-member-description { color:<?php echo sanitize_hex_color($primary_color); ?>; }
 		<?php endif; ?>
     </style>
 	<?php
@@ -176,26 +186,102 @@ if(!function_exists('cpotheme_logo')){
 	function cpotheme_logo($width = 0, $height = 0){
 		$output = '<div id="logo" class="logo">';
 		if(cpotheme_get_option('general_texttitle') == 0){
-			if(cpotheme_get_option('general_logo') == ''){
-				if(defined('CPOTHEME_LOGO_WIDTH')) $width = intval(CPOTHEME_LOGO_WIDTH);
-				$output .= '<a class="site-logo" href="'.home_url().'"><img src="'.get_stylesheet_directory_uri().'/images/logo.png" alt="'.get_bloginfo('name').'" width="'.esc_attr($width).'" height="'.esc_attr($height).'"/></a>';
-			}else{
+			if( cpotheme_get_option('general_logo') ){
 				$logo_width = cpotheme_get_option('general_logo_width');
 				$logo_url = esc_url(cpotheme_get_option('general_logo'));
 				if($logo_width != '') $logo_width = ' style="width:'.esc_attr($logo_width).'px;"';
-				$output .= '<a class="site-logo" href="'.home_url().'"><img src="'.$logo_url.'" alt="'.get_bloginfo('name').'"'.$logo_width.'/></a>';
+				$output .= '<a class="site-logo" href="'.esc_url(home_url()).'"><img src="'.$logo_url.'" alt="'.get_bloginfo('name').'"'.$logo_width.'/></a>';
+			}else{
+				$output .= '<span class="title site-title"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></span>';
 			}
 		}
 		
 		$classes = '';
 		if(cpotheme_get_option('general_texttitle') == 0) $classes = ' hidden';
 		if(!is_front_page()){
-			$output .= '<span class="title site-title'.esc_attr($classes).'"><a href="'.home_url().'">'.get_bloginfo('name').'</a></span>';
+			$output .= '<span class="title site-title'.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></span>';
 		}else{
-			$output .= '<h1 class="title site-title '.esc_attr($classes).'"><a href="'.home_url().'">'.get_bloginfo('name').'</a></h1>';
+			$output .= '<h1 class="title site-title '.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></h1>';
 		}
 		
 		$output .= '</div>';
 		echo $output;
 	}
+}
+
+if(!function_exists('cpotheme_postpage_title')){
+	function cpotheme_postpage_title(){
+		if(!is_singular('post')){
+			echo '<h2 class="post-title">';
+			echo '<a href="'.get_permalink(get_the_ID()).'" title="'.sprintf(esc_attr__('Go to %s', 'allegiant'), the_title_attribute('echo=0')).'" rel="bookmark">';
+			if ( is_sticky() ) {
+				echo '<span style="font-family:fontawesome"></span>';
+			}
+			the_title();
+			echo '</a>';
+			echo '</h2>';
+		}
+	}
+}
+
+// Custom Background
+function ascendant_custom_background_cb() {
+	// $background is the saved custom image, or the default image.
+	$background = set_url_scheme( get_background_image() );
+	// $color is the saved custom color.
+	// A default has to be specified in style.css. It will not be printed here.
+	$color = get_background_color();
+	if ( $color === get_theme_support( 'custom-background', 'default-color' ) ) {
+		$color = false;
+	}
+	if ( ! $background && ! $color ) {
+		if ( is_customize_preview() ) {
+			echo '<style type="text/css" id="custom-background-css"></style>';
+		}
+		return;
+	}
+	$background_color = $color ? "background-color: #$color;" : '';
+	$style = '';
+	if ( $background ) {
+		$image = ' background-image: url("' . esc_url_raw( $background ) . '");';
+		// Background Position.
+		$position_x = get_theme_mod( 'background_position_x', get_theme_support( 'custom-background', 'default-position-x' ) );
+		$position_y = get_theme_mod( 'background_position_y', get_theme_support( 'custom-background', 'default-position-y' ) );
+		if ( ! in_array( $position_x, array( 'left', 'center', 'right' ), true ) ) {
+			$position_x = 'left';
+		}
+		if ( ! in_array( $position_y, array( 'top', 'center', 'bottom' ), true ) ) {
+			$position_y = 'top';
+		}
+		$position = " background-position: $position_x $position_y;";
+		// Background Size.
+		$size = get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) );
+		if ( ! in_array( $size, array( 'auto', 'contain', 'cover' ), true ) ) {
+			$size = 'auto';
+		}
+		$size = " background-size: $size;";
+		// Background Repeat.
+		$repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) );
+		if ( ! in_array( $repeat, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ), true ) ) {
+			$repeat = 'repeat';
+		}
+		$repeat = " background-repeat: $repeat;";
+		// Background Scroll.
+		$attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) );
+		if ( 'fixed' !== $attachment ) {
+			$attachment = 'scroll';
+		}
+		$attachment = " background-attachment: $attachment;";
+		$style .= $image . $position . $size . $repeat . $attachment;
+	}
+?>
+<style type="text/css" id="custom-background-css">
+body.custom-background { <?php echo trim( $style ); ?> }
+body.custom-background #main, 
+body.custom-background #features,
+body.custom-background #testimonials,
+body.custom-background #clients,
+body.custom-background #portfolio { <?php echo trim( $background_color ); ?> }
+</style>
+<?php
 }

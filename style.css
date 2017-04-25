@@ -5,7 +5,7 @@
  Tags: one-column, two-columns, right-sidebar, full-width-template, sticky-post, theme-options, custom-background, custom-menu, featured-images, threaded-comments, translation-ready
  Author:CPOThemes
  Author URI: https://cpothemes.com/
- Version: 0.5
+ Version: 0.6
  License: GNU General Public License 3.0 or later
  License URI: license.md
  Template: allegiant
@@ -45,7 +45,7 @@ a,
 /* Header */
 .header { position:relative; background:#fff; border-bottom:1px solid #e1e1e1; width:100%;padding: 0; }
 .header.header-with-slider {position: absolute;width: 100%;top: 0; left: 0; background-color: transparent;z-index: 999;}
-.header.with-top-menu{top:34px;}
+.header.with-top-menu.header-with-slider{top:34px;}
 .header .logo { float:left; padding-top:10px;padding-bottom:10px; }
 .header .header-content { float:right; padding:0 0 0 20px; }
 
@@ -136,7 +136,7 @@ body:not(.allegian_pro_template) .tagline-title,
 body.allegian_pro_template .tagline-content {
     font-size: 26px;
     font-family: "Raleway";
-    font-weight: 300;
+    font-weight: 400;
     line-height: 44px;
     text-transform: initial;
 }
@@ -233,11 +233,11 @@ body #tagline {
 	padding: 20px 30px;
 }
 .team .team-member-description {
-	font-size: 15px;
+	font-size: 12px;
 	line-height: 24px;
 	text-transform: initial;
 	font-family: "Raleway";
-	font-weight: 300;
+	font-weight: 400;
 }
 .testimonial-position {
     font-family: "Raleway";
@@ -296,7 +296,7 @@ input[type=submit] {
 }
 #footer {
 	border-top: 1px solid #a9afb1;
-	padding: 30px 0;
+	padding: 10px 0;
 }
 .footer:before {
 	display: none;
@@ -321,6 +321,9 @@ body #subfooter {
 .ctwg-tweets .ctwg-tweet {
 	font-size: 15px;
 }
+.post-title > a > span {
+    padding-right: 10px;
+}
 
 /* Sections */
 .home .services,
@@ -333,6 +336,11 @@ body #subfooter {
 	-moz-transform: translateY(60px);
     -webkit-transform: translateY(60px);
     transform: translateY(60px);
+}
+
+/* Features */
+.features .feature .feature-content p {
+    line-height: 26px;
 }
 
 /* Pro CSS */
@@ -354,3 +362,4 @@ body #subfooter {
 .allegian_pro_template .menu-main li ul .has-children:before {
 	margin-top: -12px;
 }
+
