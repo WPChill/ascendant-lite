@@ -47,6 +47,8 @@ Screenshot Image - https://pixabay.com/en/fog-forest-mountain-world-clouds-15352
 License: CC0 Public Domain
 Copyright: Pixabay
 
+Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of MachoThemes.com.
+
 # Description
 
 Ascendant is a free multipurpose WordPress theme perfect for agencies and professionals. This theme comes with support for a full homepage slider, feature blocks, portfolios, services, team members, and even testimonials, all thanks to its companion plugin CPO Content Types. Ascendant is one of the best business WordPress themes thanks to its neutral design and extreme flexibility. Moreover, this theme also integrates with popular plugins such as WooCommerce, Yoast SEO, WPML, and Contact Form 7.
@@ -84,6 +86,9 @@ Afterwards you can continue theme setup and customization via WordPress Dashboar
 Theme documentation is available on https://cpothemes.com/documentation
 
 # Changelog
+
+## v0.5
+* wp.org review
 
 ## v0.2 
 * Initial release.

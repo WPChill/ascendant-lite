@@ -162,7 +162,7 @@ add_action('wp_head', 'ascendant_cpotheme_styling_custom', 20);
 function ascendant_cpotheme_styling_custom(){
 	$primary_color = cpotheme_get_option('primary_color'); ?>
 	<style type="text/css">
-		<?php if($primary_color != ''): ?>
+		<?php if($primary_color != ''){ ?>
 		html body .button, 
 		html body .button:link, 
 		html body .button:visited,
@@ -174,7 +174,7 @@ function ascendant_cpotheme_styling_custom(){
 		.menu-main .current_page_ancestor > a,
 		.menu-main .current-menu-item > a,
 		.features a.feature-image, .team .team-member-description { color:<?php echo esc_attr($primary_color); ?>; }
-		<?php endif; ?>
+		<?php } ?>
     </style>
 	<?php
 }
@@ -194,7 +194,7 @@ if(!function_exists('cpotheme_logo')){
 		}
 		
 		$classes = '';
-		if(cpotheme_get_option('general_texttitle') == 0) $classes = ' hidden';
+		if(cpotheme_get_option('general_texttitle') == 0) { $classes = ' hidden' };
 		if(!is_front_page()){
 			$output .= '<span class="title site-title'.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></span>';
 		}else{
