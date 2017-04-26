@@ -28,7 +28,7 @@ if(!function_exists('ascendant_child_add_styles')){
 	add_action('wp_enqueue_scripts', 'ascendant_child_add_styles' );
 	function ascendant_child_add_styles(){
 
-		$parent_style = 'cpotheme-main'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+		$parent_style = 'cpotheme-main'; 
  		wp_enqueue_style( 'ascendant-google-font', 'https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:300,400,500,700,800,900' );
 	    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
 	    wp_enqueue_style( 'ascendant-style',
@@ -36,9 +36,6 @@ if(!function_exists('ascendant_child_add_styles')){
 	        array( $parent_style, 'cpotheme-base' ),
 	        wp_get_theme()->get('Version')
 	    );
-
-			
-		// wp_enqueue_style('ascendant-main', get_template_directory_uri().'/style.css');
 
 	}
 }
@@ -171,12 +168,12 @@ function ascendant_cpotheme_styling_custom(){
 		html body .button:visited,
 		.menu-portfolio .current-cat a,
 		.pagination .current,
-		html body input[type=submit] { background: <?php echo sanitize_hex_color($primary_color); ?>; }
+		html body input[type=submit] { background: <?php echo esc_attr($primary_color); ?>; }
 		html body .button:hover,
-		html body input[type=submit]:hover { color:#fff; background:<?php echo sanitize_hex_color($primary_color); ?>; }
+		html body input[type=submit]:hover { color:#fff; background:<?php echo esc_attr($primary_color); ?>; }
 		.menu-main .current_page_ancestor > a,
 		.menu-main .current-menu-item > a,
-		.features a.feature-image, .team .team-member-description { color:<?php echo sanitize_hex_color($primary_color); ?>; }
+		.features a.feature-image, .team .team-member-description { color:<?php echo esc_attr($primary_color); ?>; }
 		<?php endif; ?>
     </style>
 	<?php
@@ -213,7 +210,7 @@ if(!function_exists('cpotheme_postpage_title')){
 	function cpotheme_postpage_title(){
 		if(!is_singular('post')){
 			echo '<h2 class="post-title">';
-			echo '<a href="'.get_permalink(get_the_ID()).'" title="'.sprintf(esc_attr__('Go to %s', 'allegiant'), the_title_attribute('echo=0')).'" rel="bookmark">';
+			echo '<a href="'.esc_url(get_permalink(get_the_ID())).'" title="'.sprintf(esc_attr__('Go to %s', 'allegiant'), the_title_attribute('echo=0')).'" rel="bookmark">';
 			if ( is_sticky() ) {
 				echo '<span style="font-family:fontawesome"></span>';
 			}
@@ -240,7 +237,7 @@ function ascendant_custom_background_cb() {
 		}
 		return;
 	}
-	$background_color = $color ? "background-color: #$color;" : '';
+	$background_color = $color ? "background-color: #".esc_attr($color).";" : '';
 	$style = '';
 	if ( $background ) {
 		$image = ' background-image: url("' . esc_url_raw( $background ) . '");';
@@ -253,25 +250,25 @@ function ascendant_custom_background_cb() {
 		if ( ! in_array( $position_y, array( 'top', 'center', 'bottom' ), true ) ) {
 			$position_y = 'top';
 		}
-		$position = " background-position: $position_x $position_y;";
+		$position = " background-position: ".esc_attr($position_x)." ".esc_attr($position_y).";";
 		// Background Size.
 		$size = get_theme_mod( 'background_size', get_theme_support( 'custom-background', 'default-size' ) );
 		if ( ! in_array( $size, array( 'auto', 'contain', 'cover' ), true ) ) {
 			$size = 'auto';
 		}
-		$size = " background-size: $size;";
+		$size = " background-size: ".esc_attr($size).";";
 		// Background Repeat.
 		$repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) );
 		if ( ! in_array( $repeat, array( 'repeat-x', 'repeat-y', 'repeat', 'no-repeat' ), true ) ) {
 			$repeat = 'repeat';
 		}
-		$repeat = " background-repeat: $repeat;";
+		$repeat = " background-repeat: ".esc_attr($repeat).";";
 		// Background Scroll.
 		$attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) );
 		if ( 'fixed' !== $attachment ) {
 			$attachment = 'scroll';
 		}
-		$attachment = " background-attachment: $attachment;";
+		$attachment = " background-attachment: ".esc_attr($attachment).";";
 		$style .= $image . $position . $size . $repeat . $attachment;
 	}
 ?>
