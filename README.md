@@ -92,6 +92,9 @@ Theme documentation is available on https://cpothemes.com/documentation
 
 # Changelog
 
+## v0.7
+* second wp.org review
+
 ## v0.5
 * wp.org review
 
