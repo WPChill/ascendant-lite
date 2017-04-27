@@ -69,7 +69,7 @@ function ascendant_add_customizer_fields( $data ){
 	$data['transparent_header'] = array(
 		'label' => __('Transparent Header', 'allegiant'),
 		'description' => __('Your header will be transparent.', 'allegiant'),
-		'section' => 'cpotheme_management',
+		'section' => 'cpotheme_layout_home',
 		'type' => 'checkbox',
 		'sanitize' => 'cpotheme_sanitize_bool',
 		'default' => '1');
@@ -194,7 +194,7 @@ if(!function_exists('cpotheme_logo')){
 		}
 		
 		$classes = '';
-		if(cpotheme_get_option('general_texttitle') == 0) { $classes = ' hidden' };
+		if(cpotheme_get_option('general_texttitle') == 0) { $classes = ' hidden'; }
 		if(!is_front_page()){
 			$output .= '<span class="title site-title'.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></span>';
 		}else{

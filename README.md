@@ -47,7 +47,7 @@ Screenshot Image - https://pixabay.com/en/fog-forest-mountain-world-clouds-15352
 License: CC0 Public Domain
 Copyright: Pixabay
 
-Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of MachoThemes.com.
+Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of CPOThemes.com.
 
 # Description
 
