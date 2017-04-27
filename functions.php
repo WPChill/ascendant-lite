@@ -19,7 +19,7 @@ function ascendant_child_theme_setup() {
 }
 
 function ascendant_body_class( $classes ){
-	$classes[] = 'allegian_pro_template';
+	$classes[] = 'allegiant_pro_template';
 	return $classes;
 }
 

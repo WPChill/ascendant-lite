@@ -132,15 +132,15 @@ body .section-heading {
 
 /* Tagline */
 .tagline .container,
-body:not(.allegian_pro_template) .tagline-title,
-body.allegian_pro_template .tagline-content {
+body:not(.allegiant_pro_template) .tagline-title,
+body.allegiant_pro_template .tagline-content {
     font-size: 26px;
     font-family: "Raleway";
     font-weight: 400;
     line-height: 44px;
     text-transform: initial;
 }
-body.allegian_pro_template .tagline-title {
+body.allegiant_pro_template .tagline-title {
 	font-size: 30px;
     line-height: 35px;
     font-weight: 800;
@@ -261,8 +261,8 @@ body #tagline {
 	background-color: #70b85d;
 	margin-top: 20px;
 }
-.blog:not(.allegian_pro_template) .post-byline,
-.blog:not(.allegian_pro_template) .post-comments {
+.blog:not(.allegiant_pro_template) .post-byline,
+.blog:not(.allegiant_pro_template) .post-comments {
 	display: none;
 }
 html body .button, 
@@ -356,10 +356,10 @@ body #subfooter {
 .post .post-byline {
 	margin-bottom: 0;
 }
-.allegian_pro_template .menu-main .has-children:before {
+.allegiant_pro_template .menu-main .has-children:before {
 	margin-top: -13px;
 }
-.allegian_pro_template .menu-main li ul .has-children:before {
+.allegiant_pro_template .menu-main li ul .has-children:before {
 	margin-top: -12px;
 }
 
