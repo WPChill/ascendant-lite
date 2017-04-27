@@ -67,8 +67,8 @@ add_filter( 'cpotheme_customizer_controls', 'ascendant_add_customizer_fields', 1
 function ascendant_add_customizer_fields( $data ){
 
 	$data['transparent_header'] = array(
-		'label' => __('Transparent Header', 'allegiant'),
-		'description' => __('Your header will be transparent.', 'allegiant'),
+		'label' => __('Transparent Header', 'ascendant'),
+		'description' => __('Your header will be transparent.', 'ascendant'),
 		'section' => 'cpotheme_layout_home',
 		'type' => 'checkbox',
 		'sanitize' => 'cpotheme_sanitize_bool',
@@ -210,7 +210,7 @@ if(!function_exists('cpotheme_postpage_title')){
 	function cpotheme_postpage_title(){
 		if(!is_singular('post')){
 			echo '<h2 class="post-title">';
-			echo '<a href="'.esc_url(get_permalink(get_the_ID())).'" title="'.sprintf(esc_attr__('Go to %s', 'allegiant'), the_title_attribute('echo=0')).'" rel="bookmark">';
+			echo '<a href="'.esc_url(get_permalink(get_the_ID())).'" title="'.sprintf(esc_attr__('Go to %s', 'ascendant'), the_title_attribute('echo=0')).'" rel="bookmark">';
 			if ( is_sticky() ) {
 				echo '<span style="font-family:fontawesome"></span>';
 			}
