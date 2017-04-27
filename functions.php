@@ -186,7 +186,7 @@ if(!function_exists('cpotheme_logo')){
 			if( cpotheme_get_option('general_logo') ){
 				$logo_width = cpotheme_get_option('general_logo_width');
 				$logo_url = esc_url(cpotheme_get_option('general_logo'));
-				if($logo_width != '') $logo_width = ' style="width:'.esc_attr($logo_width).'px;"';
+				if($logo_width != '') $logo_width = ' style="width:'.absint($logo_width).'px;"';
 				$output .= '<a class="site-logo" href="'.esc_url(home_url()).'"><img src="'.$logo_url.'" alt="'.get_bloginfo('name').'"'.$logo_width.'/></a>';
 			}else{
 				$output .= '<span class="title site-title"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></span>';
