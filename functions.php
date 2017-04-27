@@ -29,7 +29,7 @@ if(!function_exists('ascendant_child_add_styles')){
 	function ascendant_child_add_styles(){
 
 		$parent_style = 'cpotheme-main'; 
- 		wp_enqueue_style( 'ascendant-google-font', 'https://fonts.googleapis.com/css?family=Lato:400,700|Raleway:300,400,500,700,800,900' );
+ 		wp_enqueue_style( 'ascendant-google-font', '//fonts.googleapis.com/css?family=Lato:400,700|Raleway:300,400,500,700,800,900' );
 	    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
 	    wp_enqueue_style( 'ascendant-style',
 	        get_stylesheet_uri(),
