@@ -186,19 +186,19 @@ if(!function_exists('cpotheme_logo')){
 			if( cpotheme_get_option('general_logo') ){
 				$logo_width = cpotheme_get_option('general_logo_width');
 				$logo_url = esc_url(cpotheme_get_option('general_logo'));
-				if($logo_width != '') $logo_width = ' style="width:'.absint($logo_width).'px;"';
-				$output .= '<a class="site-logo" href="'.esc_url(home_url()).'"><img src="'.$logo_url.'" alt="'.get_bloginfo('name').'"'.$logo_width.'/></a>';
+				if($logo_width != '') { $logo_width = ' style="width:'.absint($logo_width).'px;"'; }
+				$output .= '<a class="site-logo" href="'.esc_url(home_url()).'"><img src="'.$logo_url.'" alt="'.esc_attr(get_bloginfo('name')).'"'.$logo_width.'/></a>';
 			}else{
-				$output .= '<span class="title site-title"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></span>';
+				$output .= '<span class="title site-title"><a href="'.esc_url(home_url()).'">'.esc_html(get_bloginfo('name')).'</a></span>';
 			}
 		}
 		
 		$classes = '';
 		if(cpotheme_get_option('general_texttitle') == 0) { $classes = ' hidden'; }
 		if(!is_front_page()){
-			$output .= '<span class="title site-title'.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></span>';
+			$output .= '<span class="title site-title'.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.esc_html(get_bloginfo('name')).'</a></span>';
 		}else{
-			$output .= '<h1 class="title site-title '.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.get_bloginfo('name').'</a></h1>';
+			$output .= '<h1 class="title site-title '.esc_attr($classes).'"><a href="'.esc_url(home_url()).'">'.esc_html(get_bloginfo('name')).'</a></h1>';
 		}
 		
 		$output .= '</div>';
