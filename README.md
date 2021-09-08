@@ -91,6 +91,8 @@ Afterwards you can continue theme setup and customization via WordPress Dashboar
 Theme documentation is available on https://cpothemes.com/documentation
 
 # Changelog
+## v0.7
+* Theme Standards
 
 ## v0.7
 * second wp.org review
@@ -98,7 +100,7 @@ Theme documentation is available on https://cpothemes.com/documentation
 ## v0.5
 * wp.org review
 
-## v0.2 
+## v0.2
 * Initial release.
 
 

@@ -1,11 +1,11 @@
 /*
  Theme Name: Ascendant
  Theme URI: https://cpothemes.com/theme/ascendant
- Description: Ascendant is a free multipurpose WordPress theme perfect for agencies and professionals. This theme comes with support for a full homepage slider, feature blocks, portfolios, services, team members, and even testimonials, all thanks to its companion plugin CPO Content Types. Ascendant is one of the best business WordPress themes thanks to its neutral design and extreme flexibility. Moreover, this theme also integrates with popular plugins such as WooCommerce, Yoast SEO, WPML, and Contact Form 7. 
+ Description: Ascendant is a free multipurpose WordPress theme perfect for agencies and professionals. This theme comes with support for a full homepage slider, feature blocks, portfolios, services, team members, and even testimonials, all thanks to its companion plugin CPO Content Types. Ascendant is one of the best business WordPress themes thanks to its neutral design and extreme flexibility. Moreover, this theme also integrates with popular plugins such as WooCommerce, Yoast SEO, WPML, and Contact Form 7.
  Tags: one-column, two-columns, right-sidebar, full-width-template, sticky-post, theme-options, custom-background, custom-menu, featured-images, threaded-comments, translation-ready
  Author:CPOThemes
  Author URI: https://cpothemes.com/
- Version: 0.7
+ Version: 0.8
  License: GNU General Public License 3.0 or later
  License URI: license.md
  Template: allegiant
@@ -54,10 +54,10 @@ a,
 .menu-main > li:after{position:absolute; bottom:-1px; width:50%; left:25%; background-color:#70b85d; height:1px; display:block;z-index:999999;}
 .menu-main > li:hover:after { content: ""; }
 
-.menu-main .current-menu-ancestor > a, 
-.menu-main .current-menu-ancestor.has-children:before, 
+.menu-main .current-menu-ancestor > a,
+.menu-main .current-menu-ancestor.has-children:before,
 .menu-main .current-menu-item > a { color: #70b85d; }
-.menu-main .current_page_ancestor > a:hover, 
+.menu-main .current_page_ancestor > a:hover,
 .menu-main .current-menu-item > a:hover { color: #70b85d; }
 
 .menu-main .has-children:before { color:#18253c; content:'\f107'; font-size:0.813em; margin-top:-6px; font-family: "fontawesome"; border: 0 none; }
@@ -265,9 +265,9 @@ body #tagline {
 .blog:not(.allegiant_pro_template) .post-comments {
 	display: none;
 }
-html body .button, 
-html body .button:link, 
-html body .button:visited, 
+html body .button,
+html body .button:link,
+html body .button:visited,
 input[type=submit] {
 	border: 0 none;
 	background: #70b85d;
@@ -363,3 +363,8 @@ body #subfooter {
 	margin-top: -12px;
 }
 
+/** Theme standards */
+
+#content a, #comments a {
+	text-decoration: underline;
+}
